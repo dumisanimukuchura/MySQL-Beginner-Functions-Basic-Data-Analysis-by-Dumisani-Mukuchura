@@ -1,6 +1,12 @@
 -- QUESTIONS AND ANSWER SCRIPT
 
 -- SELECT and SELECT DISTINCT 
+
+/*
+Function Explanation
+SELECT: Retrieves specific columns or all columns (*) from a table.
+SELECT DISTINCT: Retrieves unique values in the specified column(s).
+*/
 -- Q1: What are all the columns and rows in the employee_demographics table?employee_demographics
 
 SELECT *
@@ -40,4 +46,51 @@ Healthcare
 Library
 Finance
 */
+
+-- WHERE 
+
+/*
+Function Explanation
+Filters rows based on a condition.
+Can use operators like =, >, <, >=, <=, !=, LIKE, etc.
+*/
+
+-- Q1: What are the details of employees older than 40 in employee_demographics?
+
+SELECT *
+FROM employee_demographics
+WHERE age > 40;
+
+/* Q1 Answer 
+Leslie
+Jerry
+Donna
+Chris
+*/
+
+-- Q2: Which employees in employee_salary earn more than or equal to $60,000?
+
+SELECT * 
+FROM employee_salary
+WHERE salary >= 60000;
+
+/* Q2 Answer:
+Leslie
+Ron
+Donna
+Chris
+Ben
+Craig
+*/
+
+-- Q3: Which parks departments have "Animal" in their name?
+
+SELECT department_name
+FROM parks_departments
+WHERE department_name like "%animal%";
+
+-- Q3 Answer: Animal Control
+
+
+
 
