@@ -175,3 +175,34 @@ Assistant to the Director of Parks and Recreation
 Shoe Shiner and Musician
 */
 
+-- LIMIT and Aliasing 
+
+/*
+Function Explanation
+LIMIT: Restricts the number of rows in the result.
+Aliasing (AS): Creates temporary names for columns or tables in the query result.
+*/
+
+-- Q1: Show the top 3 highest-earning employees in employee_salary.
+
+SELECT *
+FROM employee_salary
+ORDER BY salary DESC
+LIMIT 3;
+
+/*
+Chris
+Leslie
+Ron
+*/
+
+-- Q2: Rename the employee_salary table as salaries and retrieve the first 5 rows.
+
+SELECT *
+FROM employee_salary AS salaries
+LIMIT 5;
+
+-- Q3: Display only the first and last names from employee_demographics with column headers as First Name and Last Name.
+
+SELECT first_name AS "First Name", last_name AS "Last Name"
+FROM employee_demographics;
