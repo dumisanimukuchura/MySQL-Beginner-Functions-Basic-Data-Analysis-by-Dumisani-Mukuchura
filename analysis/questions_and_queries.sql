@@ -109,8 +109,19 @@ GROUP BY occupation;
 
 SELECT 
 	CASE
-		WHERE age BETWEEN 20 AND 29 THEN '20-29'
-        WHERE age BETWEEN 30AND 29 THEN '20-29'
+		WHEN age BETWEEN 20 AND 29 THEN '20-29'
+        WHEN age BETWEEN 30 AND 39 THEN '30-39'
+        WHEN age BETWEEN 40 AND 49 THEN '40-49'
+        WHEN age BETWEEN 50 AND 59 THEN '50-59'
+        WHEN age >= 60 THEN '60+'
+        ELSE 'unknown'
+	END AS age_group, 
+    COUNT(*) AS employee_count
+FROM employee_demographics
+GROUP BY age_group
+ORDER BY age_group;
+        
+        
 
 -- Q3: List all employees sorted by their salary in descending order.
 
@@ -118,4 +129,49 @@ SELECT *
 FROM employee_salary
 ORDER BY salary DESC;
 
+-- HAVING vs WHERE
+
+/*
+Function Explanation
+WHERE: Filters rows before grouping.
+HAVING: Filters grouped results after aggregation.
+*/
+
+-- Q1: What is the average salary for occupation with more than or equal to 2 employees?
+
+SELECT occupation, COUNT(occupation) AS employee_count, AVG(salary)
+FROM employee_salary
+GROUP BY occupation
+HAVING employee_count >= 2;
+
+/*
+Office Manager: 55000.00
+*/
+
+-- Q2: Which occupations have an average salary greater than $60,000?
+
+SELECT occupation, AVG(salary) AS avg_salary
+FROM employee_salary
+GROUP BY occupation
+HAVING avg_salary > 60000;
+
+/* Q2 Answer:
+Deputy Director of Parks and Recreation
+Director of Parks and Recreation
+City Manager
+State Auditor
+Parks Director
+*/
+
+-- Q3: How many employees in employee_salary are earning less than $50,000 after grouping by occupation?
+
+SELECT occupation, COUNT(*) AS employee_count 
+FROM employee_salary 
+WHERE salary < 50000 
+GROUP BY occupation;
+
+/* Q3 Answer:
+Assistant to the Director of Parks and Recreation
+Shoe Shiner and Musician
+*/
 
