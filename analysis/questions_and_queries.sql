@@ -91,6 +91,31 @@ WHERE department_name like "%animal%";
 
 -- Q3 Answer: Animal Control
 
+-- GROUP BY and ORDER BY
 
+/*
+Function Explanation
+GROUP BY: Groups rows sharing a value in specific columns, often used with aggregate functions (COUNT, SUM, AVG, etc.).
+ORDER BY: Sorts rows in ascending (ASC) or descending (DESC) order based on one or more columns.
+*/
+
+-- Q1: What is the average salary for each occupation in employee_salary
+
+SELECT occupation, AVG(salary)
+FROM employee_salary
+GROUP BY occupation;
+
+-- Q2: How many employees are in each age group (e.g., 20-29, 30-39, etc.) in employee_demographics?
+
+SELECT 
+	CASE
+		WHERE age BETWEEN 20 AND 29 THEN '20-29'
+        WHERE age BETWEEN 30AND 29 THEN '20-29'
+
+-- Q3: List all employees sorted by their salary in descending order.
+
+SELECT *
+FROM employee_salary
+ORDER BY salary DESC;
 
 
